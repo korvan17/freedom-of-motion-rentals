@@ -10,7 +10,6 @@ import {
   // setPrice,
 } from '../../redux/filterSlice';
 import { useEffect } from 'react';
-import Modal from '../Modal/Modal';
 
 export default function Carlist() {
   const { data } = useGetCarsQuery();
@@ -52,7 +51,6 @@ export default function Carlist() {
 
   return (
     <>
-      <Modal />
       <ListOfCars>
         {filterData &&
           filterData.map(car => (
