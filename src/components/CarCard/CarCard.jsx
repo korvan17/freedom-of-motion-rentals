@@ -7,8 +7,24 @@ import {
   ListOfDetail,
   MakeModel,
 } from './CarCard.styled';
+import icons from '../../images/sprite.svg';
+import { useDispatch } from 'react-redux';
+import { Api } from '../../redux/carSlice';
 
 export default function CarCard({ card }) {
+  const dispatch = useDispatch();
+
+  function handlClick(carId) {
+    dispatch(
+      Api.util.updateQueryData('getCars', undefined, Cars => {
+        const carIndex = Cars.findIndex(car => car.id === carId);
+
+        if (carIndex !== -1) {
+          Cars[carIndex].favorite = !Cars[carIndex].favorite;
+        }
+      })
+    );
+  }
   const {
     id,
     year,
@@ -20,11 +36,17 @@ export default function CarCard({ card }) {
     rentalPrice,
     rentalCompany,
     address,
+    favorite,
   } = card;
 
   return (
     <Card>
       <BlockImg>
+        <button type="button" onClick={() => handlClick(id)}>
+          <svg>
+            <use xlinkHref={`${icons}#icon-heart-${favorite}`}></use>
+          </svg>
+        </button>
         <CarImg src={img} alt={make} />
       </BlockImg>
       <MakeModel>

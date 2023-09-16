@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import {
   persistStore,
-  //   persistReducer,
+  persistReducer,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -10,17 +10,17 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-// import storage from "redux-persist/lib/storage";
+import storage from 'redux-persist/lib/storage';
 import { filtersReducer } from './filterSlice';
 import { Api } from './carSlice';
 
-// const persistedReducer = persistReducer(
-//   {
-//     key: "root",
-//     storage,
-//   },
-//   authReducer
-// );
+const persistedReducer = persistReducer(
+  {
+    key: 'Api',
+    storage,
+  },
+  Api.reducer
+);
 
 // const persistedReducerBoards = persistReducer(
 //   {
@@ -33,7 +33,7 @@ import { Api } from './carSlice';
 export const store = configureStore({
   reducer: {
     filters: filtersReducer,
-    [Api.reducerPath]: Api.reducer,
+    [Api.reducerPath]: persistedReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

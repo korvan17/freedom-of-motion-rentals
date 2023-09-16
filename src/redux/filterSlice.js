@@ -5,6 +5,7 @@ const filtersInitialState = {
   price: '',
   brandList: [],
   priceList: [],
+  favorite: false,
 };
 
 const filtersSlice = createSlice({
@@ -23,13 +24,17 @@ const filtersSlice = createSlice({
     setPriceList(state, action) {
       state.priceList = action.payload;
     },
+    setFavorite(state, action) {
+      state.favorite = action.payload;
+    },
   },
 });
 
-export const { setBrand, setPrice, setBrandList, setPriceList } =
+export const { setBrand, setPrice, setBrandList, setPriceList, setFavorite } =
   filtersSlice.actions;
 export const filtersReducer = filtersSlice.reducer;
 export const getBrand = state => state.filters.brand;
 export const getPrice = state => state.filters.price;
 export const getBrandList = state => state.filters.brandList;
 export const getPriceList = state => state.filters.priceList;
+export const getFavorite = state => state.filters.favorite;

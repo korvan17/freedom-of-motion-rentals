@@ -8,9 +8,24 @@ export const Card = styled.div`
 `;
 
 export const BlockImg = styled.div`
+  position: relative;
   height: 268px;
   overflow: hidden;
   border-radius: 12px;
+  > button {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: none;
+    > svg {
+      height: 20px;
+      width: 20px;
+      z-index: 3;
+    }
+  }
 `;
 
 export const CarImg = styled.img`

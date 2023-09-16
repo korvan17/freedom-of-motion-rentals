@@ -1,19 +1,26 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useGetCarsQuery } from '../../redux/carSlice';
 import CarCard from '../CarCard/CarCard';
 import { ListOfCars } from './CarList.styled';
 import {
   getBrand,
   getPrice,
+  setFavorite,
   // setBrandList,
   // setPrice,
 } from '../../redux/filterSlice';
+import { useEffect } from 'react';
 
 export default function Carlist() {
   const { data } = useGetCarsQuery();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const brand = useSelector(getBrand);
   const price = useSelector(getPrice);
+  useEffect(() => {
+    dispatch(
+      setFavorite(data.find(car => car.favorite === true) !== undefined)
+    );
+  }, [data, dispatch]);
 
   // const brandList = [];
   // const priceList = [];
@@ -46,7 +53,7 @@ export default function Carlist() {
     <ListOfCars>
       {filterData &&
         filterData.map(car => (
-          <li key={car.id + car.mileage}>
+          <li key={car.id}>
             <CarCard card={car} />
           </li>
         ))}

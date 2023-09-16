@@ -20,9 +20,14 @@ export const MenuStyled = styled.ul`
   }
   > li {
     cursor: pointer;
+    width: 100%;
     > button {
+      width: 100%;
       border: none;
       all: inherit;
+      &:hover {
+        color: black;
+      }
     }
   }
 `;

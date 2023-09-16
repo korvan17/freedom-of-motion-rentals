@@ -10,8 +10,14 @@ export const Api = createApi({
     getCars: builder.query({
       query: () => `/`,
       providesTags: ['Car'],
+      transformResponse: response => {
+        return response.map(car => ({
+          ...car,
+          favorite: false,
+        }));
+      },
     }),
   }),
 });
 
-export const { useGetCarsQuery } = Api;
+export const { useGetCarsQuery, useEditCarsQuery } = Api;
