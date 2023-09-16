@@ -17,9 +17,11 @@ export default function Carlist() {
   const brand = useSelector(getBrand);
   const price = useSelector(getPrice);
   useEffect(() => {
-    dispatch(
-      setFavorite(data.find(car => car.favorite === true) !== undefined)
-    );
+    if (data) {
+      dispatch(
+        setFavorite(data.find(car => car.favorite === true) !== undefined)
+      );
+    }
   }, [data, dispatch]);
 
   // const brandList = [];
