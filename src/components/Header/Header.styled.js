@@ -12,7 +12,7 @@ export const HeaderStyled = styled.nav`
   background-color: #fff;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   .notLink {
     color: grey;
     cursor: pointer;

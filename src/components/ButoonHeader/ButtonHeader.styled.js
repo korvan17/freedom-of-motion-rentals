@@ -15,7 +15,8 @@ export const ButtonMenu = styled.button`
   border-radius: 14px;
   border: none;
   background-color: #f7f7fb;
-  z-index: 2;
+  margin-top: 8px;
+  z-index: 1;
   > svg {
     width: 20px;
     height: 20px;

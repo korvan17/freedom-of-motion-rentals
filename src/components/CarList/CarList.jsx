@@ -10,6 +10,7 @@ import {
   // setPrice,
 } from '../../redux/filterSlice';
 import { useEffect } from 'react';
+import Modal from '../Modal/Modal';
 
 export default function Carlist() {
   const { data } = useGetCarsQuery();
@@ -50,13 +51,16 @@ export default function Carlist() {
   }
 
   return (
-    <ListOfCars>
-      {filterData &&
-        filterData.map(car => (
-          <li key={car.id}>
-            <CarCard card={car} />
-          </li>
-        ))}
-    </ListOfCars>
+    <>
+      <Modal />
+      <ListOfCars>
+        {filterData &&
+          filterData.map(car => (
+            <li key={car.id}>
+              <CarCard card={car} />
+            </li>
+          ))}
+      </ListOfCars>
+    </>
   );
 }

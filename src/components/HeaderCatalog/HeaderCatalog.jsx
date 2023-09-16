@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ButtonHeader from '../ButoonHeader/ButtonHeader';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
-import { HeaderStyle, InputStyled } from './HeaderCatalog.styled';
+import { HeaderCatalogStyle, InputStyled } from './HeaderCatalog.styled';
 import { Transition } from 'react-transition-group';
 import makes from '../../resource/makes.json';
 import { useSelector } from 'react-redux';
@@ -33,8 +33,9 @@ export default function HeaderCatalog() {
   }
 
   return (
-    <HeaderStyle>
-      <div className={`menuMake`}>
+    <HeaderCatalogStyle>
+      <div className={`menu make`}>
+        <p className="title">Car brand</p>
         <ButtonHeader togleMenu={togleMenu} rotate={openMenu}>
           {brand === 'All' ? 'Enter the text' : brand}
         </ButtonHeader>
@@ -46,7 +47,8 @@ export default function HeaderCatalog() {
           )}
         </Transition>
       </div>
-      <div className="menuPrice">
+      <div className="menu price">
+        <p className="title">Price/ 1 hour</p>
         <ButtonHeader togleMenu={togleMenuTo} rotate={openMenuTo}>
           To {priceHour === 'All' ? '' : priceHour} $
         </ButtonHeader>
@@ -58,8 +60,13 @@ export default function HeaderCatalog() {
           )}
         </Transition>
       </div>
-      <InputStyled type="text" />
-      <InputStyled type="text" className="right" />
-    </HeaderStyle>
+      <div className="menu mileage">
+        <p className="title">Сar mileage / km</p>
+        <div>
+          <InputStyled type="text" />
+          <InputStyled type="text" className="right" />
+        </div>
+      </div>
+    </HeaderCatalogStyle>
   );
 }

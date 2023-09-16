@@ -1,23 +1,28 @@
 import styled from 'styled-components';
 
-export const HeaderStyle = styled.div`
+export const HeaderCatalogStyle = styled.div`
   margin: 0 auto;
   display: flex;
   gap: 18px;
   width: 859px;
-  height: 74px;
-  .menuMake {
+  height: 124px;
+  align-items: flex-start;
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     position: relative;
+  }
+  .make {
     width: 224px;
   }
-  .menuPrice {
-    position: relative;
+  .price {
     width: 125px;
   }
   .menuBlock {
     height: 272px;
     position: absolute;
-    top: 50px;
+    top: 75px;
     padding: 14px 8px 14px 18px;
     border-radius: 14px;
     border: 1px solid rgba(18, 20, 23, 0.05);
@@ -27,6 +32,14 @@ export const HeaderStyle = styled.div`
     transform-origin: top;
     transition: transform 0.3s;
     z-index: 1;
+  }
+  .title {
+    color: #8a8a89;
+    /* font-family: Manrope; */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
   }
   .entring,
   .entered {
@@ -48,6 +61,7 @@ export const InputStyled = styled.input`
   border-right: 1px solid rgba(138, 138, 137, 0.2);
   background: #f7f7fb;
   border: none;
+  margin-top: 8px;
   &.right {
     border-radius: 0px 14px 14px 0px;
     background: #f7f7fb;
