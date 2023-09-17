@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 
 export const BackDrop = styled.div`
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   flex-shrink: 0;
   background: rgba(18, 20, 23, 0.5);
   z-index: 3;
-  overflow: hidden;
   top: 0;
   left: 0;
 `;
 
 export const ModalWindow = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,12 +24,20 @@ export const ModalWindow = styled.div`
   padding: 40px;
   border-radius: 24px;
   background-color: white;
-
+  > .buttonClose {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+  }
   > img {
     border-radius: 14px;
     background: #f3f3f2;
     width: 461px;
     height: 248px;
+    object-fit: cover;
   }
   > ul {
     color: #121417;

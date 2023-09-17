@@ -2,31 +2,7 @@ import { ListOfDetail, MakeModel } from '../CarCard/CarCard.styled';
 import { BackDrop, ModalWindow } from './Modal.styled';
 import icons from '../../images/sprite.svg';
 
-export default function Modal() {
-  const car = {
-    id: 9582,
-    year: 2008,
-    make: 'Buick',
-    model: 'Enclave',
-    type: 'SUV',
-    img: 'https://res.cloudinary.com/ditdqzoio/image/upload/v1687252635/cars/buick_enclave.jpg',
-    description:
-      'The Buick Enclave is a stylish and spacious SUV known for its comfortable ride and luxurious features.',
-    fuelConsumption: '10.5',
-    engineSize: '3.6L V6',
-    accessories: ['Leather seats', 'Panoramic sunroof', 'Premium audio system'],
-    functionalities: [
-      'Power liftgate',
-      'Remote start',
-      'Blind-spot monitoring',
-    ],
-    rentalPrice: '$40',
-    rentalCompany: 'Luxury Car Rentals',
-    address: '123 Example Street, Kiev, Ukraine',
-    rentalConditions:
-      "Minimum age: 25\nValid driver's license\nSecurity deposit required",
-    mileage: 5858,
-  };
+export default function Modal({ closeModal, car }) {
   const {
     id,
     year,
@@ -45,16 +21,14 @@ export default function Modal() {
     mileage,
   } = car;
 
-  function handlClick() {}
+  document.body.style.overflow = 'hidden';
 
   return (
     <BackDrop>
       <ModalWindow>
-        <button type="button" onClick={handlClick}>
-          <svg>
-            <use xlinkHref={`${icons}#icon-close`}></use>
-          </svg>
-        </button>
+        <svg className="buttonClose" onClick={closeModal}>
+          <use xlinkHref={`${icons}#icon-close`}></use>
+        </svg>
         <img src={img} alt={make} />
         <ul>
           <li>
@@ -80,10 +54,10 @@ export default function Modal() {
             <p>Accessories and functionalities:</p>
             <ListOfDetail>
               {accessories.map(acc => (
-                <li>{acc}</li>
+                <li key={acc}>{acc}</li>
               ))}
               {functionalities.map(func => (
-                <li>{func}</li>
+                <li key={func}>{func}</li>
               ))}
             </ListOfDetail>
           </li>
@@ -100,7 +74,7 @@ export default function Modal() {
                 .split(`\n`)
                 .slice(1)
                 .map(condition => (
-                  <li>{condition}</li>
+                  <li key={condition}>{condition}</li>
                 ))}
               <li className="fontMontserrat">
                 Mileage:

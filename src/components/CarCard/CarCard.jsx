@@ -11,7 +11,7 @@ import icons from '../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { Api } from '../../redux/carSlice';
 
-export default function CarCard({ card }) {
+export default function CarCard({ card, openModal }) {
   const dispatch = useDispatch();
 
   function handlClick(carId) {
@@ -65,7 +65,9 @@ export default function CarCard({ card }) {
         <li>{id}</li>
         <li>{functionalities[0]}</li>
       </ListOfDetail>
-      <LearnMoreButton>Learn more</LearnMoreButton>
+      <LearnMoreButton onClick={() => openModal(card)}>
+        Learn more
+      </LearnMoreButton>
     </Card>
   );
 }

@@ -9,13 +9,16 @@ import {
   // setBrandList,
   // setPrice,
 } from '../../redux/filterSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Modal from '../Modal/Modal';
 
 export default function Carlist() {
   const { data } = useGetCarsQuery();
   const dispatch = useDispatch();
   const brand = useSelector(getBrand);
   const price = useSelector(getPrice);
+  const [isModal, setModal] = useState(false);
+  const [getCar, setCar] = useState(null);
   useEffect(() => {
     if (data) {
       dispatch(
@@ -51,13 +54,22 @@ export default function Carlist() {
     );
   }
 
+  function openModal(car) {
+    setModal(true);
+    setCar(car);
+  }
+
+  function closeModal() {
+    setModal(false);
+  }
   return (
     <>
+      {isModal && <Modal closeModal={closeModal} car={getCar} />}
       <ListOfCars>
         {filterData &&
           filterData.map(car => (
             <li key={car.id}>
-              <CarCard card={car} />
+              <CarCard card={car} openModal={openModal} />
             </li>
           ))}
       </ListOfCars>
