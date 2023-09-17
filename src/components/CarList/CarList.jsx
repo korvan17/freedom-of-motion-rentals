@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetCarsQuery } from '../../redux/carSlice';
 import CarCard from '../CarCard/CarCard';
-import { ListOfCars } from './CarList.styled';
+import { ListOfCars, LoadMore } from './CarList.styled';
 import {
   getBrand,
   getPrice,
@@ -9,13 +9,14 @@ import {
   // setBrandList,
   // setPrice,
 } from '../../redux/filterSlice';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Carlist() {
   const { data } = useGetCarsQuery();
   const dispatch = useDispatch();
   const brand = useSelector(getBrand);
   const price = useSelector(getPrice);
+  const [noElements, setNoElements] = useState(8);
   useEffect(() => {
     if (data) {
       dispatch(
@@ -51,6 +52,8 @@ export default function Carlist() {
     );
   }
 
+  filterData = filterData.slice(0, noElements);
+
   return (
     <>
       <ListOfCars>
@@ -61,6 +64,9 @@ export default function Carlist() {
             </li>
           ))}
       </ListOfCars>
+      <LoadMore type="button" onClick={() => setNoElements(prev => prev + 8)}>
+        Load more
+      </LoadMore>
     </>
   );
 }

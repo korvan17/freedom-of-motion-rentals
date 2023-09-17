@@ -12,7 +12,7 @@ export default function Layout() {
   return (
     <LayoutStyle>
       {isModal && <Modal car={getCar} />}
-      <div>
+      <div className="main">
         <Header />
         <Outlet />
       </div>

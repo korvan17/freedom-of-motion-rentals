@@ -2,14 +2,15 @@ import styled from 'styled-components';
 
 export const LayoutStyle = styled.div`
   position: relative;
-  margin: auto;
-  min-height: 100vh;
   padding: 150px 0 0;
   background-color: white;
   width: 100%;
-  > div {
+  .main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 300px);
     max-width: 1440px;
     margin: 0 auto;
-    padding: 20px 0;
   }
 `;

@@ -4,7 +4,7 @@ export const HomeStyle = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 630px;
+  height: calc(100vh - 300px);
   background-image: url('https://oir.mobi/uploads/posts/2021-06/1623840239_15-oir_mobi-p-mashina-v-gorakh-priroda-krasivo-foto-15.jpg');
   background-size: cover;
   background-position: 0;
