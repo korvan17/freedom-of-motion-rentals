@@ -64,9 +64,11 @@ export default function Carlist() {
             </li>
           ))}
       </ListOfCars>
-      <LoadMore type="button" onClick={() => setNoElements(prev => prev + 8)}>
-        Load more
-      </LoadMore>
+      {filterData.length > 0 && data.length > noElements && (
+        <LoadMore type="button" onClick={() => setNoElements(prev => prev + 8)}>
+          Load more
+        </LoadMore>
+      )}
     </>
   );
 }
