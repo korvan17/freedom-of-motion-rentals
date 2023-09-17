@@ -12,18 +12,19 @@ import {
 import { useEffect, useState } from 'react';
 
 export default function Carlist() {
-  const { data } = useGetCarsQuery();
+  const { data, isSuccess } = useGetCarsQuery();
   const dispatch = useDispatch();
   const brand = useSelector(getBrand);
   const price = useSelector(getPrice);
   const [noElements, setNoElements] = useState(8);
+
   useEffect(() => {
-    if (data) {
+    if (isSuccess && data) {
       dispatch(
         setFavorite(data.find(car => car.favorite === true) !== undefined)
       );
     }
-  }, [data, dispatch]);
+  }, [data, isSuccess, dispatch]);
 
   // const brandList = [];
   // const priceList = [];
@@ -37,8 +38,10 @@ export default function Carlist() {
 
   // dispatch(setBrandList(brandList));
   // dispatch(setPrice(roundedPrices));
-
-  let filterData = data;
+  let filterData;
+  if (isSuccess && data) {
+    filterData = data;
+  }
   if (brand !== 'Enter the text' && brand !== 'All') {
     filterData = data.filter(car => car.make === brand);
   }
@@ -52,12 +55,14 @@ export default function Carlist() {
     );
   }
 
-  filterData = filterData.slice(0, noElements);
+  if (filterData) {
+    filterData = filterData.slice(0, noElements);
+  }
 
   return (
     <>
       <ListOfCars>
-        {filterData &&
+        {isSuccess &&
           filterData.map(car => (
             <li key={car.id}>
               <CarCard card={car} />
