@@ -1,20 +1,31 @@
 import { useState } from 'react';
 import ButtonHeader from '../ButoonHeader/ButtonHeader';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
-import { HeaderCatalogStyle, InputStyled } from './HeaderCatalog.styled';
+import {
+  FormMileage,
+  HeaderCatalogStyle,
+  InputStyled,
+  Search,
+} from './HeaderCatalog.styled';
 import { Transition } from 'react-transition-group';
 import makes from '../../resource/makes.json';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   getBrand,
   getPrice,
   setBrand,
+  setMileage,
   setPrice,
 } from '../../redux/filterSlice';
 
 export default function HeaderCatalog() {
   const brand = useSelector(getBrand);
   const priceHour = useSelector(getPrice);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenuTo, setOpenMenuTo] = useState(false);
+  const [from, setFrom] = useState('');
+  const [to, setTo] = useState('');
+  const dispatch = useDispatch();
 
   function price() {
     const numbers = ['All'];
@@ -23,8 +34,29 @@ export default function HeaderCatalog() {
     }
     return numbers;
   }
-  const [openMenu, setOpenMenu] = useState(false);
-  const [openMenuTo, setOpenMenuTo] = useState(false);
+
+  function inputChange(e, inputNumber) {
+    const value = e.target.value;
+    if (/^\d*$/.test(value)) {
+      if (inputNumber === 1) {
+        setFrom(value);
+      } else if (inputNumber === 2) {
+        setTo(value);
+      }
+    } else {
+      alert('Enter numbers only');
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (from && to) {
+      dispatch(setMileage([from, to]));
+    } else {
+      alert('Fill in both fields');
+    }
+  }
+
   function togleMenu() {
     setOpenMenu(!openMenu);
   }
@@ -62,10 +94,22 @@ export default function HeaderCatalog() {
       </div>
       <div className="menu mileage">
         <p className="title">Сar mileage / km</p>
-        <div>
-          <InputStyled type="text" />
-          <InputStyled type="text" className="right" />
-        </div>
+        <FormMileage onSubmit={handleSubmit}>
+          <InputStyled
+            type="text"
+            value={from}
+            onChange={e => inputChange(e, 1)}
+          />
+          <InputStyled
+            type="text"
+            value={to}
+            onChange={e => inputChange(e, 2)}
+            className="right"
+          />
+          <Search type="submit" disabled={!from || !to}>
+            Search
+          </Search>
+        </FormMileage>
       </div>
     </HeaderCatalogStyle>
   );

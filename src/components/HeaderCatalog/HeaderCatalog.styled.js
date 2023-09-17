@@ -51,6 +51,12 @@ export const HeaderCatalogStyle = styled.div`
   }
 `;
 
+export const FormMileage = styled.form`
+  width: auto;
+  display: flex;
+  align-items: baseline;
+`;
+
 export const InputStyled = styled.input`
   width: 160px;
   height: 48px;
@@ -71,4 +77,22 @@ export const InputStyled = styled.input`
     outline: none;
     border-color: transparent;
   }
+`;
+
+export const Search = styled.button`
+  display: flex;
+  width: 136px;
+  height: 48px;
+  padding: 14px 44px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: #3470ff;
+  border: none;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 20px;
+  color: white;
+  margin-left: 18px;
 `;
