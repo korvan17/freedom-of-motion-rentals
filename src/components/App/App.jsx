@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Layout from '../Layout/Laypout';
 import CatalogPage from '../../pages/CatalogPage';
 import FavoritesPage from '../../pages/FavoritesPage';
@@ -11,6 +11,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="catalog" element={<CatalogPage />} />
         <Route path="favorites" element={<FavoritesPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   );
