@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/freedom-of-motion-rentals/static/css/main.c47a4881.css",
-    "main.js": "/freedom-of-motion-rentals/static/js/main.50493f8b.js",
+    "main.js": "/freedom-of-motion-rentals/static/js/main.ae2b2a8e.js",
     "static/media/sprite.svg": "/freedom-of-motion-rentals/static/media/sprite.34407ebd730e982191b028972bf0108f.svg",
     "index.html": "/freedom-of-motion-rentals/index.html",
     "main.c47a4881.css.map": "/freedom-of-motion-rentals/static/css/main.c47a4881.css.map",
-    "main.50493f8b.js.map": "/freedom-of-motion-rentals/static/js/main.50493f8b.js.map"
+    "main.ae2b2a8e.js.map": "/freedom-of-motion-rentals/static/js/main.ae2b2a8e.js.map"
   },
   "entrypoints": [
     "static/css/main.c47a4881.css",
-    "static/js/main.50493f8b.js"
+    "static/js/main.ae2b2a8e.js"
   ]
 }
