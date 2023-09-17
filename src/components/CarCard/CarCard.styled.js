@@ -62,7 +62,7 @@ export const ListOfDetail = styled.ul`
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 8px;
 
   > li {
     position: relative;
@@ -76,10 +76,6 @@ export const ListOfDetail = styled.ul`
       right: -4px;
       transform: translateY(-50%);
       background-color: rgba(18, 20, 23, 0.1);
-    }
-
-    @media (max-width: 500px) {
-      width: 50%;
     }
   }
 `;
