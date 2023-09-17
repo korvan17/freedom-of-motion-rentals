@@ -2,10 +2,16 @@ import { ListOfDetail, MakeModel } from '../CarCard/CarCard.styled';
 import { BackDrop, ModalWindow } from './Modal.styled';
 import icons from '../../images/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCarForModal, setIsModal } from '../../redux/filterSlice';
+import {
+  getCarForModal,
+  getIsModal,
+  setIsModal,
+} from '../../redux/filterSlice';
+import { useEffect } from 'react';
 
 export default function Modal() {
   const car = useSelector(getCarForModal);
+  const isOpen = useSelector(getIsModal);
   const dispatch = useDispatch();
 
   const {
@@ -30,10 +36,22 @@ export default function Modal() {
     dispatch(setIsModal(false));
   }
 
-  document.body.style.overflow = 'hidden';
+  useEffect(() => {
+    function escPress(event) {
+      if (event.key === 'Escape') {
+        dispatch(setIsModal(false));
+      }
+    }
+    if (isOpen) {
+      window.addEventListener('keydown', escPress);
+    }
+    return () => {
+      window.removeEventListener('keydown', escPress);
+    };
+  }, [isOpen, dispatch]);
 
   return (
-    <BackDrop>
+    <BackDrop onClick={closeModal}>
       <ModalWindow>
         <svg className="buttonClose" onClick={closeModal}>
           <use xlinkHref={`${icons}#icon-close`}></use>
