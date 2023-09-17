@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const LayoutStyle = styled.div`
   position: relative;
   margin: auto;
-  height: 100%;
-  padding: 150px 0;
+  min-height: 100vh;
+  padding: 150px 0 0;
   background-color: white;
   width: 100%;
   > div {

@@ -10,8 +10,9 @@ import {
 import icons from '../../images/sprite.svg';
 import { useDispatch } from 'react-redux';
 import { Api } from '../../redux/carSlice';
+import { setCarForModal, setIsModal } from '../../redux/filterSlice';
 
-export default function CarCard({ card, openModal }) {
+export default function CarCard({ card }) {
   const dispatch = useDispatch();
 
   function handlClick(carId) {
@@ -38,6 +39,11 @@ export default function CarCard({ card, openModal }) {
     address,
     favorite,
   } = card;
+
+  function openModal(cardOfCar) {
+    dispatch(setIsModal(true));
+    dispatch(setCarForModal(cardOfCar));
+  }
 
   return (
     <Card>

@@ -1,8 +1,13 @@
 import { ListOfDetail, MakeModel } from '../CarCard/CarCard.styled';
 import { BackDrop, ModalWindow } from './Modal.styled';
 import icons from '../../images/sprite.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCarForModal, setIsModal } from '../../redux/filterSlice';
 
-export default function Modal({ closeModal, car }) {
+export default function Modal() {
+  const car = useSelector(getCarForModal);
+  const dispatch = useDispatch();
+
   const {
     id,
     year,
@@ -20,6 +25,10 @@ export default function Modal({ closeModal, car }) {
     address,
     mileage,
   } = car;
+
+  function closeModal() {
+    dispatch(setIsModal(false));
+  }
 
   document.body.style.overflow = 'hidden';
 
