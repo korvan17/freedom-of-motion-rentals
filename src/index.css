@@ -3,14 +3,17 @@ html {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
-
+@font-face {
+  font-family: Manrope;
+  src: url('./fonts/Manrope/static/Manrope-Regular.ttf');
+}
+@font-face {
+  font-family: Montserrat;
+  src: url('./fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+}
 body {
   margin: 0;
-  font-family:
-    Manrope,
-    -apple-system,
-    BlinkMacSystemFont,
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #313131;

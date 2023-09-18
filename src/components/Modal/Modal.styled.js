@@ -58,7 +58,7 @@ export const ModalWindow = styled.div`
     flex-wrap: wrap;
     gap: 8px;
     .fontMontserrat {
-      font-family: Manrope;
+      font-family: Montserrat;
     }
     > li {
       border-radius: 35px;
@@ -70,7 +70,7 @@ export const ModalWindow = styled.div`
       line-height: 18px;
       .number {
         color: #3470ff;
-        font-family: Manrope;
+        font-family: Montserrat;
         font-size: 12px;
         font-style: normal;
         font-weight: 600;
