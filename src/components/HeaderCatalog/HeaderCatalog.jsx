@@ -24,8 +24,8 @@ export default function HeaderCatalog() {
   const priceHour = useSelector(getPrice);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenuTo, setOpenMenuTo] = useState(false);
-  const [from, setFrom] = useState(null);
-  const [to, setTo] = useState(null);
+  const [from, setFrom] = useState('');
+  const [to, setTo] = useState('');
   const dispatch = useDispatch();
 
   function price() {
