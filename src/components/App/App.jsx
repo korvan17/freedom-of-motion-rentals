@@ -11,7 +11,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        {isSuccess && <Route path="catalog" element={<CatalogPage />} />}
+        <Route path="catalog" element={<CatalogPage />} />
         {isSuccess && <Route path="favorites" element={<FavoritesPage />} />}
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
