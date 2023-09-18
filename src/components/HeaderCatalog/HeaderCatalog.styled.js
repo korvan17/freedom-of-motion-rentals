@@ -52,12 +52,15 @@ export const HeaderCatalogStyle = styled.div`
 `;
 
 export const FormMileage = styled.form`
+  position: relative;
   width: auto;
   display: flex;
   align-items: baseline;
 `;
 
 export const InputStyled = styled.input`
+  font-family: inherit;
+  font-size: inherit;
   width: 160px;
   height: 48px;
   padding: 14px 93px 14px 24px;
@@ -68,14 +71,26 @@ export const InputStyled = styled.input`
   background: #f7f7fb;
   border: none;
   margin-top: 8px;
+  padding-left: 60px;
+  padding-right: 10px;
   &.right {
     border-radius: 0px 14px 14px 0px;
     background: #f7f7fb;
     margin-left: -18px;
+    padding-left: 30px;
   }
   &:focus {
     outline: none;
     border-color: transparent;
+  }
+`;
+
+export const Label = styled.span`
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  &.rightLabel {
+    left: 150px;
   }
 `;
 

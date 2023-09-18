@@ -5,6 +5,7 @@ import {
   FormMileage,
   HeaderCatalogStyle,
   InputStyled,
+  Label,
   Search,
 } from './HeaderCatalog.styled';
 import { Transition } from 'react-transition-group';
@@ -23,8 +24,8 @@ export default function HeaderCatalog() {
   const priceHour = useSelector(getPrice);
   const [openMenu, setOpenMenu] = useState(false);
   const [openMenuTo, setOpenMenuTo] = useState(false);
-  const [from, setFrom] = useState('');
-  const [to, setTo] = useState('');
+  const [from, setFrom] = useState(null);
+  const [to, setTo] = useState(null);
   const dispatch = useDispatch();
 
   function price() {
@@ -50,11 +51,7 @@ export default function HeaderCatalog() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (from && to) {
-      dispatch(setMileage([from, to]));
-    } else {
-      alert('Fill in both fields');
-    }
+    dispatch(setMileage([from, to]));
   }
 
   function togleMenu() {
@@ -103,20 +100,20 @@ export default function HeaderCatalog() {
       <div className="menu mileage">
         <p className="title">Сar mileage / km</p>
         <FormMileage onSubmit={handleSubmit}>
+          <Label>From</Label>
           <InputStyled
             type="text"
             value={from}
             onChange={e => inputChange(e, 1)}
           />
+          <Label className="rightLabel">To</Label>
           <InputStyled
             type="text"
             value={to}
             onChange={e => inputChange(e, 2)}
             className="right"
           />
-          <Search type="submit" disabled={!from || !to}>
-            Search
-          </Search>
+          <Search type="submit">Search</Search>
         </FormMileage>
       </div>
     </HeaderCatalogStyle>
