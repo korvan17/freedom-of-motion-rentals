@@ -2,13 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useGetCarsQuery } from '../../redux/carSlice';
 import CarCard from '../CarCard/CarCard';
 import { ListOfCars, LoadMore } from './CarList.styled';
-import {
-  getBrand,
-  getPrice,
-  setFavorite,
-  // setBrandList,
-  // setPrice,
-} from '../../redux/filterSlice';
+import { getBrand, getPrice, setFavorite } from '../../redux/filterSlice';
 import { useEffect, useState } from 'react';
 
 export default function Carlist() {
@@ -26,27 +20,15 @@ export default function Carlist() {
     }
   }, [data, isSuccess, dispatch]);
 
-  // const brandList = [];
-  // const priceList = [];
-
-  // data.forEach(car => {
-  //   const rentalPrice = Number(car.rentalPrice.replace('$', ''));
-  //   brandList.push(car.make);
-  //   priceList.push(rentalPrice);
-  // });
-  // const roundedPrices = priceList.map(price => Math.ceil(price / 10) * 10).sort();
-
-  // dispatch(setBrandList(brandList));
-  // dispatch(setPrice(roundedPrices));
   let filterData;
   if (isSuccess && data) {
     filterData = data;
   }
-  if (brand !== 'Enter the text' && brand !== 'All') {
+  if (brand !== 'Enter the text') {
     filterData = data.filter(car => car.make === brand);
   }
 
-  if (price !== '' && price !== 'All') {
+  if (price !== '') {
     const priceNumber = parseInt(price, 10);
     filterData = filterData.filter(
       car =>

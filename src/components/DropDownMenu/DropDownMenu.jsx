@@ -1,9 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { MenuStyled } from './DropDownMenu.styled';
 
-export default function DropDownMenu({ arr, setFunction }) {
+export default function DropDownMenu({ arr, setFunction, closeMenu }) {
   const dispatch = useDispatch();
   function getValue(e) {
+    closeMenu();
     dispatch(setFunction(e.target.textContent));
   }
 

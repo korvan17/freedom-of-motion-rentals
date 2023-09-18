@@ -74,7 +74,11 @@ export default function HeaderCatalog() {
         <Transition in={openMenu} timeout={300} unmountOnExit={true}>
           {state => (
             <div className={`menuBlock ${state}`}>
-              <DropDownMenu arr={makes} setFunction={setBrand} />
+              <DropDownMenu
+                arr={makes}
+                setFunction={setBrand}
+                closeMenu={togleMenu}
+              />
             </div>
           )}
         </Transition>
@@ -87,7 +91,11 @@ export default function HeaderCatalog() {
         <Transition in={openMenuTo} timeout={300} unmountOnExit={true}>
           {state => (
             <div className={`menuBlock ${state}`}>
-              <DropDownMenu arr={price()} setFunction={setPrice} />
+              <DropDownMenu
+                arr={price()}
+                setFunction={setPrice}
+                closeMenu={togleMenuTo}
+              />
             </div>
           )}
         </Transition>
