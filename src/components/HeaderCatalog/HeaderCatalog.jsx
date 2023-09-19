@@ -75,6 +75,7 @@ export default function HeaderCatalog() {
                 arr={makes}
                 setFunction={setBrand}
                 closeMenu={togleMenu}
+                isMenuOpen={openMenu}
               />
             </div>
           )}
@@ -92,6 +93,7 @@ export default function HeaderCatalog() {
                 arr={price()}
                 setFunction={setPrice}
                 closeMenu={togleMenuTo}
+                isMenuOpen={openMenuTo}
               />
             </div>
           )}
