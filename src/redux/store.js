@@ -22,17 +22,17 @@ const persistedReducer = persistReducer(
   Api.reducer
 );
 
-// const persistedReducerBoards = persistReducer(
-//   {
-//     key: "boards",
-//     storage,
-//   },
-//   boardsReducer
-// );
+const persistedReducerFilter = persistReducer(
+  {
+    key: 'filters',
+    storage,
+  },
+  filtersReducer
+);
 
 export const store = configureStore({
   reducer: {
-    filters: filtersReducer,
+    filters: persistedReducerFilter,
     [Api.reducerPath]: persistedReducer,
   },
   middleware: getDefaultMiddleware =>
