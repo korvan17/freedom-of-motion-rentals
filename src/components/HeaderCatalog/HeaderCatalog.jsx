@@ -5,8 +5,14 @@ import {
   FormMileage,
   HeaderCatalogStyle,
   InputStyled,
+  InputStyledRight,
   Label,
+  MenuBlock,
+  MenuMake,
+  MenuPrice,
+  RightLabel,
   Search,
+  TitleMenu,
 } from './HeaderCatalog.styled';
 import { Transition } from 'react-transition-group';
 import makes from '../../resource/makes.json';
@@ -63,44 +69,44 @@ export default function HeaderCatalog() {
 
   return (
     <HeaderCatalogStyle>
-      <div className={`menu make`}>
-        <p className="title">Car brand</p>
+      <MenuMake>
+        <TitleMenu>Car brand</TitleMenu>
         <ButtonHeader togleMenu={togleMenu} rotate={openMenu}>
           {brand === 'All' ? 'Enter the text' : brand}
         </ButtonHeader>
         <Transition in={openMenu} timeout={300} unmountOnExit={true}>
           {state => (
-            <div className={`menuBlock ${state}`}>
+            <MenuBlock className={state}>
               <DropDownMenu
                 arr={makes}
                 setFunction={setBrand}
                 closeMenu={togleMenu}
                 isMenuOpen={openMenu}
               />
-            </div>
+            </MenuBlock>
           )}
         </Transition>
-      </div>
-      <div className="menu price">
-        <p className="title">Price/ 1 hour</p>
+      </MenuMake>
+      <MenuPrice>
+        <TitleMenu>Price/ 1 hour</TitleMenu>
         <ButtonHeader togleMenu={togleMenuTo} rotate={openMenuTo}>
           To {priceHour === 'All' ? '' : priceHour} $
         </ButtonHeader>
         <Transition in={openMenuTo} timeout={300} unmountOnExit={true}>
           {state => (
-            <div className={`menuBlock ${state}`}>
+            <MenuBlock className={state}>
               <DropDownMenu
                 arr={price()}
                 setFunction={setPrice}
                 closeMenu={togleMenuTo}
                 isMenuOpen={openMenuTo}
               />
-            </div>
+            </MenuBlock>
           )}
         </Transition>
-      </div>
-      <div className="menu mileage">
-        <p className="title">Сar mileage / km</p>
+      </MenuPrice>
+      <div>
+        <TitleMenu>Сar mileage / km</TitleMenu>
         <FormMileage onSubmit={handleSubmit}>
           <Label>From</Label>
           <InputStyled
@@ -108,12 +114,11 @@ export default function HeaderCatalog() {
             value={from}
             onChange={e => inputChange(e, 1)}
           />
-          <Label className="rightLabel">To</Label>
-          <InputStyled
+          <RightLabel>To</RightLabel>
+          <InputStyledRight
             type="text"
             value={to}
             onChange={e => inputChange(e, 2)}
-            className="right"
           />
           <Search type="submit">Search</Search>
         </FormMileage>

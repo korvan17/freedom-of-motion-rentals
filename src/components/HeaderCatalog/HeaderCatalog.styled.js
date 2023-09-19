@@ -7,48 +7,52 @@ export const HeaderCatalogStyle = styled.div`
   width: 859px;
   height: 124px;
   align-items: flex-start;
-  .menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    position: relative;
-  }
-  .make {
-    width: 224px;
-  }
-  .price {
-    width: 125px;
-  }
-  .menuBlock {
-    height: 272px;
-    position: absolute;
-    top: 75px;
-    padding: 14px 8px 14px 18px;
-    border-radius: 14px;
-    border: 1px solid rgba(18, 20, 23, 0.05);
-    background-color: #fff;
-    box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.02);
-    width: 100%;
-    transform-origin: top;
-    transition: transform 0.3s;
-    z-index: 1;
-  }
-  .title {
-    color: #8a8a89;
-    /* font-family: Manrope; */
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 18px;
-  }
-  .entring,
-  .entered {
+`;
+
+export const MenuBlock = styled.div`
+  height: 272px;
+  position: absolute;
+  top: 75px;
+  padding: 14px 8px 14px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(18, 20, 23, 0.05);
+  background-color: #fff;
+  box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.02);
+  width: 100%;
+  transform-origin: top;
+  transition: transform 0.3s;
+  z-index: 1;
+  &.entring,
+  &.entered {
     transform: scaleY(100%);
   }
-  .exiting,
-  .exited {
+  &.exiting,
+  &.exited {
     transform: scaleY(0);
   }
+`;
+
+const Menu = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+`;
+
+export const MenuMake = styled(Menu)`
+  width: 224px;
+`;
+
+export const MenuPrice = styled(Menu)`
+  width: 125px;
+`;
+
+export const TitleMenu = styled.p`
+  color: #8a8a89;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
 `;
 
 export const FormMileage = styled.form`
@@ -73,25 +77,27 @@ export const InputStyled = styled.input`
   margin-top: 8px;
   padding-left: 60px;
   padding-right: 10px;
-  &.right {
-    border-radius: 0px 14px 14px 0px;
-    background: #f7f7fb;
-    margin-left: -18px;
-    padding-left: 30px;
-  }
   &:focus {
     outline: none;
     border-color: transparent;
   }
 `;
 
+export const InputStyledRight = styled(InputStyled)`
+  border-radius: 0px 14px 14px 0px;
+  background: #f7f7fb;
+  margin-left: -18px;
+  padding-left: 30px;
+`;
+
 export const Label = styled.span`
   position: absolute;
   top: 20px;
   left: 15px;
-  &.rightLabel {
-    left: 150px;
-  }
+`;
+
+export const RightLabel = styled(Label)`
+  left: 150px;
 `;
 
 export const Search = styled.button`
